@@ -7,6 +7,7 @@
 <body>
   <button onclick="saveReq()">글작성</button>
   <a href="/board/save">글작성(링크)</a>
+    <button onclick = "listReq()">글목록</button>
 </body>
 <script>
 //  function save Req() {
@@ -14,6 +15,9 @@
 //  }
   const saveReq = () => {
     location.href = "/board/save";
+  }
+  const listReq = () => {
+    location.href = "/board/";
   }
 </script>
 </html>
