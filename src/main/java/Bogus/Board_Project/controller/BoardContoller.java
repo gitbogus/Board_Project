@@ -43,4 +43,17 @@ public class BoardContoller {
         model.addAttribute("board", boardDTO);
         return "detail";
     }
+    @GetMapping("/update/{id}")
+    public String updateForm(@PathVariable Long id, Model model) {
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("boardUpdate", boardDTO);
+        return "update";
+    }
+    @PostMapping("/update")
+    public String update(@ModelAttribute BoardDTO boardDTO, Model model) {
+        BoardDTO board = boardService.update(boardDTO);
+        model.addAttribute("board", board);
+        return "detail";
+        // return "redirect:/board/" + boardDTO.getId(); 수정을 했는데 Hits Count가 영향을 받을수 있어서 redirect를 사용하지 않음.
+    }
 }
