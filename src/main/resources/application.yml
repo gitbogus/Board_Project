@@ -6,7 +6,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/Bogus_Board_Project?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://144.24.69.145:3306/Bogus_Board_Project?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: Bogus_Board
     password: 1234
   thymeleaf:
