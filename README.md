@@ -75,5 +75,9 @@ constraint FKcfxqly70ddd02xbou0jxgh4o3
 ```
 create database Bogus_Board_Project;
 create user Bogus_Board@localhost identified by '1234';
-grant all privileges on Bogus_Board_Project.* to Bogus_Board@localhost;
+grant all privileges on Bogus_Board_Project.* to 'Bogus_Board'@'%' with grant option;
+show grants for Bogus_Board@'%';
+
+* mysql 권한 부여 내용 메모리에 반영하기
+flush privileges;
 ```
