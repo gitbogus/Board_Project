@@ -13,15 +13,15 @@ import java.util.List;
 @Getter
 @Setter
 @Table(name = "board_table")
-public class BoardEntity extends BaseEntity{
-    @Id
+public class BoardEntity extends BaseEntity {
+    @Id // pk 컬럼 지정. 필수
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
     private Long id;
 
     @Column(length = 20, nullable = false) // 크기 20, not null
     private String boardWriter;
 
-    @Column(unique = true) // 크기 255, null 가능
+    @Column // 크기 255, null 가능
     private String boardPass;
 
     @Column
@@ -38,6 +38,9 @@ public class BoardEntity extends BaseEntity{
 
     @OneToMany(mappedBy = "boardEntity", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<BoardFileEntity> boardFileEntityList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "boardEntity", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<CommentEntity> commentEntityList = new ArrayList<>();
 
     public static BoardEntity toSaveEntity(BoardDTO boardDTO) {
         BoardEntity boardEntity = new BoardEntity();
@@ -60,6 +63,7 @@ public class BoardEntity extends BaseEntity{
         boardEntity.setBoardHits(boardDTO.getBoardHits());
         return boardEntity;
     }
+
     public static BoardEntity toSaveFileEntity(BoardDTO boardDTO) {
         BoardEntity boardEntity = new BoardEntity();
         boardEntity.setBoardWriter(boardDTO.getBoardWriter());
